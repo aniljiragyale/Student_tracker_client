@@ -16,8 +16,8 @@ const Login = () => {
       const companySnapshot = await getDoc(companyDocRef);
 
       if (companySnapshot.exists()) {
-        localStorage.setItem("companyCode", companyCode); // Save the actual code
-        navigate("/register"); // Navigate to student registration or dashboard
+        localStorage.setItem("companyCode", companyCode);
+        navigate("/register");
       } else {
         alert("Invalid Company Code");
       }
@@ -28,18 +28,36 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login with Company Code</h2>
-      <form onSubmit={handleLogin} className="login-form">
-        <input
-          type="text"
-          placeholder="Enter Company Code"
-          value={companyCode}
-          onChange={(e) => setCompanyCode(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-wrapper">
+      <div className="login-left">
+        <h1>
+          <span className="highlight">NaveenPN</span> Trainer, <br />
+          <span className="highlight">Education</span> Technology
+        </h1>
+        <div className="info-box">
+          <h3>🎯 Personalized Learning</h3>
+          <p>Delivering tailored content to enhance student performance</p>
+        </div>
+        <div className="info-box">
+          <h3>🌐 Tech-Powered Training</h3>
+          <p>Empowering education with the latest digital tools</p>
+        </div>
+      </div>
+
+      <div className="login-right">
+        <h2>Login / Signup</h2>
+        <p>Enter your company code to continue</p>
+        <form onSubmit={handleLogin} className="login-form">
+          <input
+            type="text"
+            placeholder="Enter Company Code"
+            value={companyCode}
+            onChange={(e) => setCompanyCode(e.target.value)}
+            required
+          />
+          <button type="submit">Continue</button>
+        </form>
+      </div>
     </div>
   );
 };
