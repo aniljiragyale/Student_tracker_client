@@ -17,7 +17,15 @@ const Login = () => {
 
       if (companySnapshot.exists()) {
         localStorage.setItem("companyCode", companyCode);
-        navigate("/register");
+
+        // 🧠 Pattern-based dynamic redirection
+        if (companyCode.includes("_")) {
+          // Example: GSK2025_GSK, WIPRO2025_wipro → admincontrol-panel
+          navigate("/admincontrol-panel");
+        } else {
+          // Example: GSK2025, WIPRO2025, GOOGLE2025 → admin
+          navigate("/register");
+        }
       } else {
         alert("Invalid Company Code");
       }
