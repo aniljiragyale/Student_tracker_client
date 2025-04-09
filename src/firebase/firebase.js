@@ -1,22 +1,22 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore"; // ✅ IMPORT THIS
+import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration using environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyBA2IZn-Y-q5pd0hNFsu4I2YNv7LkS5xVQ",
-  authDomain: "student-progress-tracker-7c64d.firebaseapp.com",
-  projectId: "student-progress-tracker-7c64d",
-  storageBucket: "student-progress-tracker-7c64d.appspot.com", // fixed `.app` typo
-  messagingSenderId: "59642185008",
-  appId: "1:59642185008:web:98c786a821318d2df4b4f5",
-  measurementId: "G-S8K8Z27GXN"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// ✅ Initialize Firestore and export it
+// Export Firestore database
 export const db = getFirestore(app);
