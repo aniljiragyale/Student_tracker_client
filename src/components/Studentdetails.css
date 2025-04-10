@@ -1,0 +1,446 @@
+/* Container for the entire RegisterStudent component */
+.register-student-container {
+  
+  margin-top: 00px;   /* Pushes content below a fixed navbar if any */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Heading */
+.register-student-container h2 {
+  margin-bottom: 1.5rem;
+}
+
+
+.view-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.view-buttons button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.view-buttons button:hover {
+  background-color: #0097a7;
+  transform: scale(1.03);
+}
+
+.view-buttons button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
+}
+
+/* Search and Sort Controls Wrapper */
+.controls {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.controls input[type="text"] {
+  padding: 12px 18px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1rem;
+  border: 2px solid #00bcd4;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.controls input[type="text"]::placeholder {
+  color: #999;
+}
+
+.controls input[type="text"]:focus {
+  border-color: #0097a7;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+}
+
+/* Container for the Student Cards Grid */
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Individual Student Card */
+.student-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  background: #fdfdfd;
+  transition: transform 0.2s ease;
+  text-align: center;
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-card h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.student-card p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+}
+
+.student-info {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+/* Attendance Row Inside Student Card */
+.attendance-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.attendance-item {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Color-coded attendance blocks */
+.attendance-item.present {
+  background-color: #4caf50;
+}
+
+.attendance-item.absent {
+  background-color: #f44336;
+}
+
+.attendance-item.late {
+  background-color: #ffc107;
+  color: black;
+}
+
+/* Button inside student card */
+.student-card button {
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.student-card button:hover {
+  background-color: #1565c0;
+}
+
+/* Attendance and Marks Tables */
+.attendance-table,
+.marks-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background-color: #fff;
+}
+
+.attendance-table th,
+.attendance-table td,
+.marks-table th,
+.marks-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.attendance-table th,
+.marks-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Modal Overlay and Content */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h2,
+.modal-content h3 {
+  margin-top: 1rem;
+}
+
+/* Close Button */
+.modal-content .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 10%;
+  padding: 0.4rem 0.7rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Overall Summary Section */
+.overall-summary {
+  margin-top: 3rem;
+  text-align: center;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bar-chart,
+  .pie-chart {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-sort-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar,
+  .sort-select {
+    width: 100%;
+  }
+}
+
+
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+}
+
+.logout-button {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #d9363e;
+}
+
+
+
+
+.module-info-container {
+  background-color: #f9f9fb;
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.module-info-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.module-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  border-left: 6px solid #4f46e5; /* Indigo border for a nice touch */
+}
+
+.module-card:hover {
+  transform: scale(1.02);
+}
+
+.module-card h3 {
+  font-size: 1.2rem;
+  color: #4f46e5;
+  margin-bottom: 10px;
+}
+
+.module-card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.module-info-container button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ef4444; /* Red tone */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.module-info-container button:hover {
+  background-color: #dc2626;
+}
+
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.completed {
+  background-color: #2ecc71;
+}
+
+.status-badge.inprogress {
+  background-color: #f39c12;
+}
+
+.status-badge.inactive {
+  background-color: #e74c3c;
+}
+
+
+.module-card {
+  position: relative;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.module-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Optional color coding based on status */
+.module-status.completed {
+  background-color: #2ecc71;
+}
+
+.module-status.inprogress {
+  background-color: #f39c12;
+}
+
+.module-status.inactive {
+  background-color: #e74c3c;
+}
